@@ -202,26 +202,41 @@ def Receipt():
 
     txtReceipt.insert(END, 'Receipt Ref:\t\t\t'+ Receipt_Ref.get() + '\t\t' + DateofOrder.get()+"\n")
     txtReceipt.insert(END, 'Items\t\t\t\t' + "Cost of Items \n\n")
-    txtReceipt.insert(END, 'Fries:\t\t\t\t\t' + E_Fries.get() + "\n")
-    txtReceipt.insert(END, 'Lunch Meal: \t\t\t\t\t' + E_Lunch.get() + "\n")
-    txtReceipt.insert(END, 'Burger: \t\t\t\t\t' + E_Burger.get() + "\n")
-    txtReceipt.insert(END, 'Pizza: \t\t\t\t\t' + E_Pizza.get() + "\n")
-    txtReceipt.insert(END, 'Cheese Burger: \t\t\t\t\t' + E_CheeseBurger.get() + "\n")
-    txtReceipt.insert(END, 'Mac Nuggets: \t\t\t\t\t' + E_MacNuggets.get() + "\n")
-    txtReceipt.insert(END, 'Mac Puff: \t\t\t\t\t' + E_MacPuff.get() + "\n")
-    txtReceipt.insert(END, 'Chicken Wings: \t\t\t\t\t' + E_ChickenWings.get() + "\n")
-    txtReceipt.insert(END, 'Coffee Cake: \t\t\t\t\t' + E_Coffee_Cake.get() + "\n")
-    txtReceipt.insert(END, 'Red Valet Cake: \t\t\t\t\t' + E_Red_Velvet_Cake.get() + "\n")
-    txtReceipt.insert(END, 'Black Forest Cake: \t\t\t\t\t' + E_Black_Forest.get() + "\n")
-    txtReceipt.insert(END, 'Boston Cream Cake: \t\t\t\t\t' + E_Boston_Cream_Cake.get() + "\n")
-    txtReceipt.insert(END, 'Latte: \t\t\t\t\t' + E_Latta.get() + "\n")
-    txtReceipt.insert(END, 'Coke: \t\t\t\t\t' + E_Coke.get() + "\n")
-    txtReceipt.insert(END, 'Pepsi: \t\t\t\t\t' + E_Pepsi.get() + "\n")
-    txtReceipt.insert(END, 'Cappuccino: \t\t\t\t\t' + E_Cappuccino.get() + "\n")
+    
+    if var1.get() == 1:
+        txtReceipt.insert(END, 'Fries:\t\t\t\t\t' + E_Fries.get() + "\n")
+    if var2.get() == 1:
+        txtReceipt.insert(END, 'Lunch Meal: \t\t\t\t\t' + E_Lunch.get() + "\n")
+    if var3.get() == 1:
+        txtReceipt.insert(END, 'Burger: \t\t\t\t\t' + E_Burger.get() + "\n")
+    if var4.get() == 1:
+        txtReceipt.insert(END, 'Pizza: \t\t\t\t\t' + E_Pizza.get() + "\n")
+    if var5.get() == 1:
+        txtReceipt.insert(END, 'Cheese Burger: \t\t\t\t\t' + E_CheeseBurger.get() + "\n")
+    if var6.get() == 1:
+        txtReceipt.insert(END, 'Mac Nuggets: \t\t\t\t\t' + E_MacNuggets.get() + "\n")
+    if var7.get() == 1:
+        txtReceipt.insert(END, 'Mac Puff: \t\t\t\t\t' + E_MacPuff.get() + "\n")
+    if var8.get() == 1:
+        txtReceipt.insert(END, 'Chicken Wings: \t\t\t\t\t' + E_ChickenWings.get() + "\n")
+    if var9.get() == 1:
+        txtReceipt.insert(END, 'Coffee Cake: \t\t\t\t\t' + E_Coffee_Cake.get() + "\n")
+    if var10.get() == 1:
+        txtReceipt.insert(END, 'Red Valet Cake: \t\t\t\t\t' + E_Red_Velvet_Cake.get() + "\n")
+    if var11.get() == 1:
+        txtReceipt.insert(END, 'Black Forest Cake: \t\t\t\t\t' + E_Black_Forest.get() + "\n")
+    if var12.get() == 1:
+        txtReceipt.insert(END, 'Boston Cream Cake: \t\t\t\t\t' + E_Boston_Cream_Cake.get() + "\n")
+    if var13.get() == 1:
+        txtReceipt.insert(END, 'Latte: \t\t\t\t\t' + E_Latta.get() + "\n")
+    if var14.get() == 1:
+        txtReceipt.insert(END, 'Coke: \t\t\t\t\t' + E_Coke.get() + "\n")
+    if var15.get() == 1:
+        txtReceipt.insert(END, 'Pepsi: \t\t\t\t\t' + E_Pepsi.get() + "\n")
+    if var16.get() == 1:
+        txtReceipt.insert(END, 'Cappuccino: \t\t\t\t\t' + E_Cappuccino.get() + "\n")
+
     txtReceipt.insert(END, 'Cost of Food: \t\t\t\t\t' + CostofFood.get() + "\t\t\tTax Paid:\t\t\t\t\t" + PaidTax.get() + "\n")
-    txtReceipt.insert(END, 'Cost of Cakes and Drinks: \t\t\t\t\t' + CostofCakesandDrinks.get() + "\t\t\tSub Total:\t\t\t\t\t" +
-                      SubTotal.get() + "\n")
-    txtReceipt.insert(END, 'Service Charge: \t\t\t\t\t' + ServiceCharge.get() + "\t\t\tTotal Cost:\t\t\t\t\t" + TotalCost.get() + "\n")
 
 
 # ============================================ CheckButton check performed module ====================================
