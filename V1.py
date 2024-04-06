@@ -1,4 +1,4 @@
-"""------------------------------------  Restraunt System Mangement -----------------------------------------------"""
+"""------------------------------------  Restraunt System Mangement  -----------------------------------------------"""
 
 """
 Made by:
@@ -90,20 +90,20 @@ def CostofItems():
     Item12 = float(E_Boston_Cream_Cake.get())
     Item13 = float(E_Latta.get())
     Item14 = float(E_Coke.get())
-    Item15 = float(E_Pepsi.get())
+    Item15 = float(E_SpiroSpates.get())
     Item16 = float(E_Cappuccino.get())
 
     PriceofFood =(Item1 * 70) + (Item2 * 90) + (Item3 * 50) + (Item4 *100) + (Item5 * 50) + (Item6 * 80) +\
                    (Item7 * 50) + (Item8 * 120)
 
     PriceofCakesandDrinks =(Item9 * 100) + (Item10 * 110) + (Item11 * 100) + (Item12 *110) + (Item13 * 70) + \
-                  (Item14 * 70) + (Item15 * 80) + (Item16 * 100)
+                  (Item14 * 70) + (Item15 * 15) + (Item16 * 60)
 
     FoodPrice = "EGP "+ str('%.2f' % PriceofFood)
     DrinksandCakesPrice = "EGP "+ str("%.2f" % PriceofCakesandDrinks)
     CostofFood.set(FoodPrice)
     CostofCakesandDrinks.set(DrinksandCakesPrice)
-    SC = "EGP "+ str("%.2f" % 15)
+    SC = "EGP "+ str("%.2f" % 5)
     print(SC)
     ServiceCharge.set(SC)
 
@@ -155,7 +155,7 @@ def Reset():
     E_Boston_Cream_Cake.set("0")
     E_Latta.set("0")
     E_Coke.set("0")
-    E_Pepsi.set("0")
+    E_SpiroSpates.set("0")
     E_Cappuccino.set("0")
 
     var1.set("0")
@@ -189,7 +189,7 @@ def Reset():
     txtBoston_Cream_Cake.configure(state=DISABLED)
     txtLatta.configure(state=DISABLED)
     txtCoke.configure(state=DISABLED)
-    txtPepsi.configure(state=DISABLED)
+    txtSpiroSpates.configure(state=DISABLED)
     txtCappuccino.configure(state=DISABLED)
 
 # ====================================================== Added Receipt Functionality Module ======================
@@ -202,26 +202,41 @@ def Receipt():
 
     txtReceipt.insert(END, 'Receipt Ref:\t\t\t'+ Receipt_Ref.get() + '\t\t' + DateofOrder.get()+"\n")
     txtReceipt.insert(END, 'Items\t\t\t\t' + "Cost of Items \n\n")
-    txtReceipt.insert(END, 'Fries:\t\t\t\t\t' + E_Fries.get() + "\n")
-    txtReceipt.insert(END, 'Lunch Meal: \t\t\t\t\t' + E_Lunch.get() + "\n")
-    txtReceipt.insert(END, 'Burger: \t\t\t\t\t' + E_Burger.get() + "\n")
-    txtReceipt.insert(END, 'Pizza: \t\t\t\t\t' + E_Pizza.get() + "\n")
-    txtReceipt.insert(END, 'Cheese Burger: \t\t\t\t\t' + E_CheeseBurger.get() + "\n")
-    txtReceipt.insert(END, 'Mac Nuggets: \t\t\t\t\t' + E_MacNuggets.get() + "\n")
-    txtReceipt.insert(END, 'Mac Puff: \t\t\t\t\t' + E_MacPuff.get() + "\n")
-    txtReceipt.insert(END, 'Chicken Wings: \t\t\t\t\t' + E_ChickenWings.get() + "\n")
-    txtReceipt.insert(END, 'Coffee Cake: \t\t\t\t\t' + E_Coffee_Cake.get() + "\n")
-    txtReceipt.insert(END, 'Red Valet Cake: \t\t\t\t\t' + E_Red_Velvet_Cake.get() + "\n")
-    txtReceipt.insert(END, 'Black Forest Cake: \t\t\t\t\t' + E_Black_Forest.get() + "\n")
-    txtReceipt.insert(END, 'Boston Cream Cake: \t\t\t\t\t' + E_Boston_Cream_Cake.get() + "\n")
-    txtReceipt.insert(END, 'Latte: \t\t\t\t\t' + E_Latta.get() + "\n")
-    txtReceipt.insert(END, 'Coke: \t\t\t\t\t' + E_Coke.get() + "\n")
-    txtReceipt.insert(END, 'Pepsi: \t\t\t\t\t' + E_Pepsi.get() + "\n")
-    txtReceipt.insert(END, 'Cappuccino: \t\t\t\t\t' + E_Cappuccino.get() + "\n")
+    
+    if var1.get() == 1:
+        txtReceipt.insert(END, 'Fries:\t\t\t\t\t' + E_Fries.get() + "\n")
+    if var2.get() == 1:
+        txtReceipt.insert(END, 'Lunch Meal: \t\t\t\t\t' + E_Lunch.get() + "\n")
+    if var3.get() == 1:
+        txtReceipt.insert(END, 'Burger: \t\t\t\t\t' + E_Burger.get() + "\n")
+    if var4.get() == 1:
+        txtReceipt.insert(END, 'Pizza: \t\t\t\t\t' + E_Pizza.get() + "\n")
+    if var5.get() == 1:
+        txtReceipt.insert(END, 'Cheese Burger: \t\t\t\t\t' + E_CheeseBurger.get() + "\n")
+    if var6.get() == 1:
+        txtReceipt.insert(END, 'Mac Nuggets: \t\t\t\t\t' + E_MacNuggets.get() + "\n")
+    if var7.get() == 1:
+        txtReceipt.insert(END, 'Mac Puff: \t\t\t\t\t' + E_MacPuff.get() + "\n")
+    if var8.get() == 1:
+        txtReceipt.insert(END, 'Chicken Wings: \t\t\t\t\t' + E_ChickenWings.get() + "\n")
+    if var9.get() == 1:
+        txtReceipt.insert(END, 'Coffee Cake: \t\t\t\t\t' + E_Coffee_Cake.get() + "\n")
+    if var10.get() == 1:
+        txtReceipt.insert(END, 'Red Valet Cake: \t\t\t\t\t' + E_Red_Velvet_Cake.get() + "\n")
+    if var11.get() == 1:
+        txtReceipt.insert(END, 'Black Forest Cake: \t\t\t\t\t' + E_Black_Forest.get() + "\n")
+    if var12.get() == 1:
+        txtReceipt.insert(END, 'Boston Cream Cake: \t\t\t\t\t' + E_Boston_Cream_Cake.get() + "\n")
+    if var13.get() == 1:
+        txtReceipt.insert(END, 'Latte: \t\t\t\t\t' + E_Latta.get() + "\n")
+    if var14.get() == 1:
+        txtReceipt.insert(END, 'Coke: \t\t\t\t\t' + E_Coke.get() + "\n")
+    if var15.get() == 1:
+        txtReceipt.insert(END, 'Pepsi: \t\t\t\t\t' + E_Pepsi.get() + "\n")
+    if var16.get() == 1:
+        txtReceipt.insert(END, 'Cappuccino: \t\t\t\t\t' + E_Cappuccino.get() + "\n")
+
     txtReceipt.insert(END, 'Cost of Food: \t\t\t\t\t' + CostofFood.get() + "\t\t\tTax Paid:\t\t\t\t\t" + PaidTax.get() + "\n")
-    txtReceipt.insert(END, 'Cost of Cakes and Drinks: \t\t\t\t\t' + CostofCakesandDrinks.get() + "\t\t\tSub Total:\t\t\t\t\t" +
-                      SubTotal.get() + "\n")
-    txtReceipt.insert(END, 'Service Charge: \t\t\t\t\t' + ServiceCharge.get() + "\t\t\tTotal Cost:\t\t\t\t\t" + TotalCost.get() + "\n")
 
 
 # ============================================ CheckButton check performed module ====================================
@@ -299,10 +314,10 @@ def chkbutton_value():
         txtCoke.configure(state=DISABLED)
         E_Coke.set("0")
     if var15.get() == 1:
-        txtPepsi.configure(state=NORMAL)
+        txtSpiroSpates.configure(state=NORMAL)
     elif var15.get() == 0:
-        txtPepsi.configure(state=DISABLED)
-        E_Pepsi.set("0")
+        txtSpiroSpates.configure(state=DISABLED)
+        E_SpiroSpates.set("0")
     if var16.get() == 1:
         txtCappuccino.configure(state=NORMAL)
     elif var16.get() == 0:
@@ -356,7 +371,7 @@ E_Black_Forest = StringVar()
 E_Boston_Cream_Cake = StringVar()
 E_Latta = StringVar()
 E_Coke = StringVar()
-E_Pepsi = StringVar()
+E_SpiroSpates = StringVar()
 E_Cappuccino = StringVar()
 
 
@@ -376,7 +391,7 @@ E_Black_Forest.set("0")
 E_Boston_Cream_Cake.set("0")
 E_Latta.set("0")
 E_Coke.set("0")
-E_Pepsi.set("0")
+E_SpiroSpates.set("0")
 E_Cappuccino.set("0")
 
 # ===================================================== Date Declared =============================================
@@ -429,7 +444,7 @@ Latta = Checkbutton(f1ab, font=('arial', 18, 'bold'), text="Latte \t", variable=
 Coke = Checkbutton(f1ab, font=('arial', 18, 'bold'), text="Coke \t", variable=var14,
                                      onvalue=1, offvalue=0, command=chkbutton_value).grid(row=5, sticky=W)
 
-Pepsi = Checkbutton(f1ab, font=('arial', 18, 'bold'), text="Pepsi \t", variable=var15, onvalue=1,
+SpiroSpates = Checkbutton(f1ab, font=('arial', 18, 'bold'), text="SpiroSpates \t", variable=var15, onvalue=1,
                                 offvalue=0, command=chkbutton_value).grid(row=6, sticky=W)
 
 Cappuccino = Checkbutton(f1ab, font=('arial', 18, 'bold'), text="Cappuccino \t", variable=var16,
@@ -481,9 +496,9 @@ txtLatta.grid(row=4, column=1)
 txtCoke = Entry(f1ab, font=('arial', 16, 'bold'), bd=8, width=6, justify='left',
                                  textvariable=E_Coke, state=DISABLED)
 txtCoke.grid(row=5, column=1)
-txtPepsi = Entry(f1ab, font=('arial', 16, 'bold'), bd=8, width=6, justify='left',
-                             textvariable=E_Pepsi, state=DISABLED)
-txtPepsi.grid(row=6, column=1)
+txtSpiroSpates = Entry(f1ab, font=('arial', 16, 'bold'), bd=8, width=6, justify='left',
+                             textvariable=E_SpiroSpates, state=DISABLED)
+txtSpiroSpates.grid(row=6, column=1)
 txtCappuccino = Entry(f1ab, font=('arial', 16, 'bold'), bd=8, width=6, justify='left',
                            textvariable=E_Cappuccino, state=DISABLED)
 txtCappuccino.grid(row=7, column=1)
