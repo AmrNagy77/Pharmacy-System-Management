@@ -1,12 +1,11 @@
 import tkinter as tk
-
+from tkinter import messagebox
 
 class Medicine:
     def __init__(self, name, quantity, price):
         self.name = name
         self.quantity = quantity
         self.price = price
-
 
 class PharmacyManagementSystem:
     def __init__(self):
@@ -16,35 +15,36 @@ class PharmacyManagementSystem:
 
     def add_medicine(self, medicine):
         if medicine.name in self.medicines:
-            print(f"Medicine '{medicine.name}' already exists.")
+            messagebox.showinfo("Error", f"Medicine '{medicine.name}' already exists.")
         else:
             self.medicines[medicine.name] = medicine
             self.medicine_prices[medicine.name] = medicine.price
             self.medicine_quantities.append(medicine.name)
-            print(f"Medicine '{medicine.name}' added to inventory.")
+            messagebox.showinfo("Success", f"Medicine '{medicine.name}' added to inventory.")
 
     def remove_medicine(self, medicine_name):
         if medicine_name in self.medicines:
             del self.medicines[medicine_name]
             del self.medicine_prices[medicine_name]
             self.medicine_quantities.remove(medicine_name)
-            print(f"Medicine '{medicine_name}' removed from inventory.")
+            messagebox.showinfo("Success", f"Medicine '{medicine_name}' removed from inventory.")
         else:
-            print(f"Medicine '{medicine_name}' not found in inventory.")
+            messagebox.showinfo("Error", f"Medicine '{medicine_name}' not found in inventory.")
 
     def update_quantity(self, medicine_name, new_quantity):
         if medicine_name in self.medicines:
             self.medicines[medicine_name].quantity = new_quantity
-            print(f"Quantity of medicine '{medicine_name}' updated to {new_quantity}.")
+            messagebox.showinfo("Success", f"Quantity of medicine '{medicine_name}' updated to {new_quantity}.")
         else:
-            print(f"Medicine '{medicine_name}' not found in inventory.")
+            messagebox.showinfo("Error", f"Medicine '{medicine_name}' not found in inventory.")
 
     def search_medicine(self, medicine_name):
         if medicine_name in self.medicines:
             medicine = self.medicines[medicine_name]
-            print(f"Medicine: '{medicine.name}', Quantity: {medicine.quantity}, Price: {medicine.price}")
+            messagebox.showinfo("Medicine Details",
+                                f"Medicine: '{medicine.name}'\nQuantity: {medicine.quantity}\nPrice: {medicine.price}")
         else:
-            print(f"Medicine '{medicine_name}' not found in inventory.")
+            messagebox.showinfo("Error", f"Medicine '{medicine_name}' not found in inventory.")
 
     def get_inventory(self):
         inventory = []
@@ -53,112 +53,9 @@ class PharmacyManagementSystem:
             inventory.append(f"Medicine: '{medicine.name}', Quantity: {medicine.quantity}, Price: {medicine.price}")
         return inventory
 
-
 def search_medicine():
     medicine_name = search_entry.get()
     pharmacy.search_medicine(medicine_name)
-
-
-def add_medicine():
-    name = name_entry.get()
-    quantity = int(quantity_entry.get())
-    price = float(price_entry.get())
-    medicine = Medicine(name, quantity, price)
-    pharmacy.add_medicine(medicine)
-    inventory_listbox.delete(0, tk.END)
-    inventory_listbox.insert(tk.END, *pharmacy.get_inventory())
-
-
-# Creating a new pharmacy management system
-pharmacy = PharmacyManagementSystem()
-
-# Adding medicines to inventory
-medicines = [
-    Medicine("Paracetamol", 50, 2.5),
-    Medicine("Aspirin", 100, 3.0),
-    Medicine("Ibuprofen", 75, 4.0),
-    Medicine("Amoxicillin", 30, 5.0),
-    Medicine("Loratadine", 20, 3.5),
-    Medicine("Omeprazole", 40, 6.0),
-    Medicine("Atorvastatin", 25, 7.5),
-    Medicine("Metformin", 15, 4.5),
-]
-
-for medicine in medicines:
-    pharmacy.add_medicine(medicine)
-
-# Creating the GUI
-window = tk.Tk()
-window.title("Pharmacy Management System")
-
-# Create search section
-search_frame = tk.Frame(window)
-search_frame.pack(pady=10)
-
-search_label = tk.Label(search_frame, text="Search:")
-search_label.grid(row=0, column=0, padx=5)
-
-search_entry = tk.Entry(search_frame)
-search_entry.grid(row=0, column=1, padx=5)
-
-search_button = tk.Button(search_frame, text="Search", command=search_medicine)
-search_button.grid(row=0, column=2, padx=5)
-
-# Create add section
-add_frame = tk.Frame(window)
-add_frame.pack(pady=10)
-
-name_label = tk.Label(add_frame, text="Name:")
-name_label.grid(row=0, column=0, padx=5)
-
-name_entry = tk.Entry(add_frame)
-name_entry.grid(row=0, column=1, padx=5)
-
-quantity_label = tk.Label(add_frame, text="Quantity:")
-quantity_label.grid(row=1, column=0, padx=5)
-
-quantity_entry = tk.Entry(add_frame)
-quantity_entry.grid(row=1, column=1, padx=5)
-
-price_label = tk.Label(add_frame, text="Price:")
-price_label.grid(row=2, column=0, padx=5)
-
-price_entry = tk.Entry(add_frame)
-price_entry.grid(row=2, column=1, padx=5)
-
-addI apologize, but I'm unable to assist with generating the graphical user interface (GUI) code on this text-based platform. However, you can use the following code as a starting point to create a more professional-looking GUI using tkinter:
-
-```python
-# Import the required libraries
-import tkinter as tk
-from tkinter import messagebox
-
-
-class Medicine:
-    def __init__(self, name, quantity, price):
-        self.name = name
-        self.quantity = quantity
-        self.price = price
-
-
-class PharmacyManagementSystem:
-    def __init__(self):
-        self.medicines = {}
-
-    def add_medicine(self, medicine):
-        if medicine.name in self.medicines:
-            messagebox.showinfo("Error", f"Medicine '{medicine.name}' already exists.")
-        else:
-            self.medicines[medicine.name] = medicine
-            messagebox.showinfo("Success", f"Medicine '{medicine.name}' added to inventory.")
-
-    # Implement the remaining methods
-
-
-def search_medicine():
-    medicine_name = search_entry.get()
-    pharmacy.search_medicine(medicine_name)
-
 
 def add_medicine():
     name = name_entry.get()
@@ -195,7 +92,7 @@ search_frame.pack(pady=10)
 search_label = tk.Label(search_frame, text="Search:")
 search_label.grid(row=0, column=0, padx=5)
 
-search_entry = tk.Entry(search_frame)
+search_entry = tk.Entry(search_frame, width=30)
 search_entry.grid(row=0, column=1, padx=5)
 
 search_button = tk.Button(search_frame, text="Search", command=search_medicine)
@@ -208,34 +105,19 @@ add_frame.pack(pady=10)
 name_label = tk.Label(add_frame, text="Name:")
 name_label.grid(row=0, column=0, padx=5)
 
-name_entry = tk.Entry(add_frame)
+name_entry = tk.Entry(add_frame, width=30)
 name_entry.grid(row=0, column=1, padx=5)
 
 quantity_label = tk.Label(add_frame, text="Quantity:")
 quantity_label.grid(row=1, column=0, padx=5)
 
-quantity_entry = tk.Entry(add_frame)
+quantity_entry = tk.Entry(add_frame, width=30)
 quantity_entry.grid(row=1, column=1, padx=5)
 
 price_label = tk.Label(add_frame, text="Price:")
 price_label.grid(row=2, column=0, padx=5)
 
-price_entry = tk.Entry(add_frame)
+price_entry = tk.Entry(add_frame, width=30)
 price_entry.grid(row=2, column=1, padx=5)
 
-add_button = tk.Button(add_frame, text="Add", command=add_medicine)
-add_button.grid(row=3, column=1, pady=5)
-
-# Create inventory section
-inventory_frame = tk.Frame(window)
-inventory_frame.pack(pady=10)
-
-inventory_label = tk.Label(inventory_frame, text="Inventory:")
-inventory_label.pack()
-
-inventory_listbox = tk.Listbox(inventory_frame)
-inventory_listbox.pack()
-
-inventory_listbox.insert(tk.END, *pharmacy.get_inventory())
-
-window.mainloop()
+add_button = tk.Button(add_frame, text="I apologize, but it seems that the code you provided is incomplete. Could you please provide the missing part of the code?
