@@ -1,0 +1,140 @@
+import sys
+from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QLabel, QLineEdit, \
+    QPushButton, QTableWidget, QTableWidgetItem
+
+
+class Medicine:
+    def __init__(self, name, quantity, price):
+        self.name = name
+        self.quantity = quantity
+        self.price = price
+
+
+class PharmacyManagementSystem:
+    def __init__(self):
+        self.medicines = {}
+        self.medicine_quantities = []
+
+    def add_medicine(self, medicine):
+        if medicine.name in self.medicines:
+            print(f"Medicine '{medicine.name}' already exists.")
+        else:
+            self.medicines[medicine.name] = medicine
+            self.medicine_quantities.append(medicine.name)
+            print(f"Medicine '{medicine.name}' added to inventory.")
+
+    def search_medicine(self, medicine_name):
+        if medicine_name in self.medicines:
+            medicine = self.medicines[medicine_name]
+            return medicine
+        else:
+            return None
+
+    def get_inventory(self):
+        inventory = []
+        for medicine_name in self.medicine_quantities:
+            medicine = self.medicines[medicine_name]
+            inventory.append([medicine.name, medicine.quantity, medicine.price])
+        return inventory
+
+
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Pharmacy Management System")
+        self.setGeometry(100, 100, 600, 400)
+
+        self.pharmacy = PharmacyManagementSystem()
+
+        self.init_ui()
+
+    def init_ui(self):
+        # Create search section
+        search_label = QLabel("Search:")
+        self.search_entry = QLineEdit()
+        search_button = QPushButton("Search")
+        search_button.clicked.connect(self.search_medicine)
+
+        search_layout = QHBoxLayout()
+        search_layout.addWidget(search_label)
+        search_layout.addWidget(self.search_entry)
+        search_layout.addWidget(search_button)
+
+        # Create add section
+        name_label = QLabel("Name:")
+        self.name_entry = QLineEdit()
+
+        quantity_label = QLabel("Quantity:")
+        self.quantity_entry = QLineEdit()
+
+        price_label = QLabel("Price:")
+        self.price_entry = QLineEdit()
+
+        add_button = QPushButton("Add")
+        add_button.clicked.connect(self.add_medicine)
+
+        add_layout = QHBoxLayout()
+        add_layout.addWidget(name_label)
+        add_layout.addWidget(self.name_entry)
+        add_layout.addWidget(quantity_label)
+        add_layout.addWidget(self.quantity_entry)
+        add_layout.addWidget(price_label)
+        add_layout.addWidget(self.price_entry)
+        add_layout.addWidget(add_button)
+
+        # Create inventory section
+        inventory_label = QLabel("Inventory:")
+        self.inventory_table = QTableWidget()
+        self.inventory_table.setColumnCount(3)
+        self.inventory_table.setHorizontalHeaderLabels(["Name", "Quantity", "Price"])
+
+        inventory_layout = QVBoxLayout()
+        inventory_layout.addWidget(inventory_label)
+        inventory_layout.addWidget(self.inventory_table)
+
+        # Create main layout
+        main_layout = QVBoxLayout()
+        main_layout.addLayout(search_layout)
+        main_layout.addLayout(add_layout)
+        main_layout.addLayout(inventory_layout)
+
+        central_widget = QWidget()
+        central_widget.setLayout(main_layout)
+        self.setCentralWidget(central_widget)
+
+    def search_medicine(self):
+        medicine_name = self.search_entry.text()
+        medicine = self.pharmacy.search_medicine(medicine_name)
+        if medicine:
+            self.display_medicine(medicine)
+        else:
+            self.display_message(f"Medicine '{medicine_name}' not found in inventory.")
+
+    def add_medicine(self):
+        name = self.name_entry.text()
+        quantity = int(self.quantity_entry.text())
+        price = float(self.price_entry.text())
+        medicine = Medicine(name, quantity, price)
+        self.pharmacy.add_medicine(medicine)
+        self.display_inventory()
+
+    def display_medicine(self, medicine):
+        self.display_message(f"Medicine: '{medicine.name}', Quantity: {medicine.quantity}, Price: {medicine.price}")
+
+    def display_inventory(self):
+        inventory = self.pharmacy.get_inventory()
+        self.inventory_table.setRowCount(len(inventory))
+        for row, data in enumerate(inventory):
+            for col, value in enumerate(data):
+                item = QTableWidgetItem(str(value))
+                self.inventory_table.setItem(row, col, item)
+
+    def display_message(self, message):
+        print(message)
+
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    window = MainWindow()
+    window.show()
+    sys.exit(app.exec_())
