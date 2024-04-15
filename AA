@@ -66,7 +66,11 @@ def add_medicine():
     inventory_listbox.delete(0, tk.END)
     inventory_listbox.insert(tk.END, *pharmacy.get_inventory())
 
-
+def remove_medicine():
+    selected_medicine = inventory_listbox.get(tk.ACTIVE)
+    pharmacy.remove_medicine(selected_medicine)
+    inventory_listbox.delete(tk.ACTIVE)
+    
 # Creating a new pharmacy management system
 pharmacy = PharmacyManagementSystem()
 
@@ -117,7 +121,28 @@ quantity_entry.grid(row=1, column=1, padx=5)
 price_label = tk.Label(add_frame, text="Price:")
 price_label.grid(row=2, column=0, padx=5)
 
-price_entry = tk.Entry(add_frame, width=30)
+price_entry = tktk.Entry(add_frame, width=30)
 price_entry.grid(row=2, column=1, padx=5)
 
-add_button = tk.Button(add_frame, text="I apologize, but it seems that the code you provided is incomplete. Could you please provide the missing part of the code?
+add_button = tk.Button(add_frame, text="Add Medicine", command=add_medicine)
+add_button.grid(row=3, columnspan=2, pady=10)
+
+# Create inventory section
+inventory_frame = tk.Frame(window)
+inventory_frame.pack(pady=10)
+
+inventory_label = tk.Label(inventory_frame, text="Inventory:")
+inventory_label.pack()
+
+inventory_listbox = tk.Listbox(inventory_frame, width=50)
+inventory_listbox.pack()
+
+remove_button = tk.Button(inventory_frame, text="Remove Medicine", command=remove_medicine)
+remove_button.pack(pady=10)
+
+# Display initial inventory
+for item in pharmacy.get_inventory():
+    inventory_listbox.insert(tk.END, item)
+
+# Start the GUI
+window.mainloop()
