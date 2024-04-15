@@ -1,1 +1,1 @@
-# Restaurant-System-Management
+# pharmasy-System-Management
