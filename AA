@@ -20,7 +20,7 @@ class PharmacyManagementSystem:
             self.medicines[medicine.name] = medicine
             self.medicine_prices[medicine.name] = medicine.price
             self.medicine_quantities.append(medicine.name)
-            messagebox.showinfo("Success", f"Medicine '{medicine.name}' added to inventory.")
+            
 
     def remove_medicine(self, medicine_name):
         if medicine_name in self.medicines:
