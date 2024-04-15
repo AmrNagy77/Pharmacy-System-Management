@@ -121,7 +121,7 @@ quantity_entry.grid(row=1, column=1, padx=5)
 price_label = tk.Label(add_frame, text="Price:")
 price_label.grid(row=2, column=0, padx=5)
 
-price_entry = tktk.Entry(add_frame, width=30)
+price_entry = tk.Entry(add_frame, width=30)
 price_entry.grid(row=2, column=1, padx=5)
 
 add_button = tk.Button(add_frame, text="Add Medicine", command=add_medicine)
