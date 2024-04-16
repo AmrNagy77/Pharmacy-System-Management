@@ -1,3 +1,11 @@
+"""------------------------------------  Pharmacy System Mangement   -----------------------------------------------"""
+
+"""
+Made by:
+     Amr Medhat Nagy
+     Abdelrahman Elghonemy Hammad 
+""" 
+
 import tkinter as tk
 from tkinter import messagebox
 
@@ -76,9 +84,13 @@ pharmacy = PharmacyManagementSystem()
 
 # Adding medicines to inventory
 medicines = [
-    Medicine("Paracetamol", 50, 2.5),
-    Medicine("Aspirin", 100, 3.0),
-    Medicine("Ibuprofen", 75, 4.0),
+    Medicine("Clarithro", 50, 27.5),
+    Medicine("Doliprane", 100, 55.5),
+    Medicine("Panadol", 75, 23.5),
+    Medicine("Rhinopro", 75, 37),
+    Medicine("Levohistam", 75, 120),
+    Medicine("Nexicure", 75, 77),
+    
     # Add more medicines here
 ]
 
