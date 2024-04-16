@@ -1,1 +1,1 @@
-# pharmasy-System-Management
+# pharmacy-System-Management
